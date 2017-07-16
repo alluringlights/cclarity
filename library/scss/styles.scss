@@ -42,6 +42,14 @@ li {
   margin-bottom: 10px;
 }
 
+input[type="text"],
+   input[type="email"],
+   input[type="password"],
+   textarea {
+    border-radius: 0;
+    -webkit-appearance: none;
+   }
+
 .container {
   overflow-y:hidden;
 }
@@ -373,8 +381,9 @@ button {
   li {
     display: inline-block;
     float: left;
-    margin: 5px 15px;
-    padding: 10px;
+    /*margin: 5px 15px;*/
+    padding: 20px;
+    margin-bottom: 0;
     @media (min-width: 768px) {
       padding: 0;
     }
@@ -428,7 +437,7 @@ button {
 
 #colophon {
   background-color: $pink;
-  padding: 100px;
+  padding: 50px;
   color: $white;
   text-align: center;
   font-family: $subheadfont;
@@ -474,6 +483,8 @@ input#s {
   border: 0;
   border-bottom: solid $pink 2px;
   background: transparent;
+  -webkit-appearance: none;
+  border-radius: 0;
   &:focus {
     outline: none;
   }
@@ -660,6 +671,7 @@ li.widget {
     &:focus {
       outline: none;
    }
+
  }
  input[type="submit"] {
   border: 2px solid $pink;
@@ -970,17 +982,21 @@ h3#comments {
 
 .wpcf7 {
   form {
-    padding-top: 50px;
+    padding-top: 50px 15px 0 15px;
   }
  input[type="text"],
  input[type="email"],
+ input[type="password"],
  textarea {
+  -webkit-appearance: none;
   width: 100%;
-  font-size: 25px;
+  font-size: 15px;
   padding: 15px;
   font-family: $bodyfont;
   border: solid 2px #eee;
+  border-radius: 0;
   transition: border 0.5s;
+
   &:focus {
     outline: none;
     border: solid 2px $pink;
