@@ -38,15 +38,14 @@
 			//$metadata = wp_get_attachment_metadata($logo);
 			$logoheight = $logo['height'];
 			$logowidth = $logo['width'];
-			$logoar = (($logoheight / $logowidth) * 100) . "%";
+			$logoar = (($logoheight / $logowidth) * 100);
 			?>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-				<div class="logo-container">
-					<h1 class="site-title has-logo" id="site-title" style="background-image: url(<?php echo $logo[url]; ?>);padding-top:<?php echo $logoar; ?>">
+				
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="site-title has-logo" id="site-title" style="background-image: url(<?php echo $logo[url]; ?>);height:<?php echo $logoar*2; ?>px">
 						<?php bloginfo( 'name' ); ?>
-					</h1>
-			</div>
-			</a>
+					</a>
+			
+			
 		</div>
 		<nav id="site-navigation" class="main-navigation container" role="navigation">
 			
