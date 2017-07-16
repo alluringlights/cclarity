@@ -1,49 +1,72 @@
 <?php
-/**
- * The template for displaying Search Results pages
- *
- * @package WordPress
- * @subpackage Twenty_Twelve
- * @since Twenty Twelve 1.0
- */
+/*
+Template Name: Search Page
+*/
+?>
 
-get_header(); ?>
+<?php get_header(); ?>
 
-	<section id="primary" class="site-content">
-		<div id="content" role="main">
+<div class="container">
+	<div class="row">
+		<div class="col-sm-9">
 
-		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentytwelve' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-			</header>
 
-			<?php twentytwelve_content_nav( 'nav-above' ); ?>
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content', get_post_format() ); ?>
-			<?php endwhile; ?>
 
-			<?php twentytwelve_content_nav( 'nav-below' ); ?>
+<?php if ( have_posts() ) : ?>
 
-		<?php else : ?>
+<h1>Search results for <em><?php the_search_query(); ?></em>.</h1>
 
-			<article id="post-0" class="post no-results not-found">
-				<header class="entry-header">
-					<h1 class="entry-title"><?php _e( 'Nothing Found', 'twentytwelve' ); ?></h1>
-				</header>
+<div class="grid">
+	<div class="grid-sizer"></div>
+	<div class="gutter-sizer"></div>
 
-				<div class="entry-content">
-					<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'twentytwelve' ); ?></p>
-					<?php get_search_form(); ?>
-				</div><!-- .entry-content -->
-			</article><!-- #post-0 -->
+	<?php while ( have_posts() ) : the_post(); ?>
 
-		<?php endif; ?>
 
-		</div><!-- #content -->
-	</section><!-- #primary -->
+<div class="col-sm-6 grid-item" id="post-<?php the_ID(); ?>">
 
-<?php get_sidebar(); ?>
+	<header class="entry-header">
+		<a href="<?php the_permalink(); ?>">	
+			<h2><?php the_title(); ?></h2>
+		</a>
+		<p><?php echo get_the_date(); ?></p>
+	</header>
+	<a href="<?php the_permalink(); ?>">
+		<?php the_post_thumbnail(); ?>
+	</a>
+	<?php the_excerpt(); ?>
+	<div class="fade-out"></div>
+	<p class="read-more"><a href="<?php the_permalink(); ?>">Read More</a></p>
+				
+			</div>
+
+
+			<?php endwhile; ?> 
+
+			</div>
+	</div>
+</div>
+<div class="nav-previous alignleft"><?php next_posts_link( 'Older posts' ); ?></div>
+<div class="nav-next alignright"><?php previous_posts_link( 'Newer posts' ); ?></div>
+
+
+		<?php else: ?>
+
+			<h1>Sorry!</h1>
+
+			<p>Nothing matched your search terms. You can try again or use one of the navigation links above.</p>
+			<?php get_search_form(); ?>
+
+			<?php endif;?>
+
+	
+
+		</div>
+	</div>
+</div>
+
+<?php //get_sidebar(); ?>
+
 <?php get_footer(); ?>

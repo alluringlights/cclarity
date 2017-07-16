@@ -1,66 +1,164 @@
-<?php
-/**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * For example, it puts together the home page when no home.php file exists.
- *
- * @link http://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Twelve
- * @since Twenty Twelve 1.0
- */
+<?php get_header(); ?>
 
-get_header(); ?>
 
-	<div id="primary" class="site-content">
-		<div id="content" role="main">
-		<?php if ( have_posts() ) : ?>
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content', get_post_format() ); ?>
-			<?php endwhile; ?>
 
-			<?php twentytwelve_content_nav( 'nav-below' ); ?>
 
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-9">
+
+<div class="row">
+<div class="grid">
+
+	<div class="grid-sizer"></div>
+	<div class="gutter-sizer"></div>
+	
+
+
+		    <?php
+			//$args = array(
+		        //'posts_per_page' => -1
+		    //);
+		    // $query = new WP_Query();
+		    //while ( $query->have_posts() ) : $query->the_post(); 
+		    //$terms = get_the_terms($post->ID, 'project_type');
+		    
+
+		    ?>
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+
+
+			<div class="col-sm-6 grid-item wow fadeIn" data-wow-duration="1s" id="post-<?php the_ID(); ?>">
+
+	<header class="entry-header">
+		<a href="<?php the_permalink(); ?>" class="fade-underline">	
+			<h2><?php the_title(); ?></h2>
+		</a>
+		<p><?php echo get_the_date(); ?></p>
+		<?php
+		if (count(get_the_category()) > 0) { ?>
+		<ul class="post-categories">
+		<?php
+		foreach (get_the_category() as $category) {
+    	if ( $category->name !== 'uncategorized' ) :
+        echo '<li><a href="' . get_category_link($category->term_id) . '">' .$category->name . '</a></li>';
+    	endif;
+    	} ?>
+    </ul>
+		<?php 
+	}
+		?>
+	</header>
+	<?php if ( has_post_thumbnail() ) : ?>
+    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+        <?php the_post_thumbnail(); ?>
+    </a>
+	<?php endif; ?>
+	<?php the_excerpt(); ?>
+	<div class="fade-out"></div>
+	<p class="read-more"><a href="<?php the_permalink(); ?>">Read More</a></p>
+				
+			</div>
+
+			<?php endwhile; endif; ?>
+</div></div>
+
+
+			<?php //posts_nav_link(); ?>
+			<div class="col-xs-6 pagination"><?php next_posts_link('older'); ?></div>
+			<div class="col-xs-6 pagination"><?php previous_posts_link('newer'); ?></div>
+
+
+
+
+</div>
+
+
+
+<div class="col-md-3">
+	<?php get_sidebar(); ?>
+</div>
+</div>
+
+</div>
+
+
+<?php if (get_field( 'parallax_section_1', 'option') ) : 
+
+while ( has_sub_field( 'parallax_section_1', 'option') ) :
+	if( get_row_layout() == 'parallax_section' ): 
+	$innerimg = get_sub_field('inner_image');
+		?>
+
+<div class="parallax-window parallax-image-1" data-parallax="scroll" data-image-src="<?php the_sub_field( 'parallax_image' ); ?>">
+	<?php if ( get_sub_field( 'text' ) || get_sub_field( 'inner_image' ) ) : 
+
+	?>
+	<div class="container">
+		<div class="row">
+			<?php if ( get_sub_field( 'text' ) && get_sub_field( 'inner_image' ) ) : ?>
+			
+			<div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0 col-md-3">
+				<?php if ($innerimg[height] > $innerimg[width]) : ?>
+			<div class="img-circle portrait" style="margin-bottom:15px;">
+				<img src="<?php echo $innerimg[url]; ?>" width="<?php echo $innerimg[height]/$innerimg[width]*100 ?>%">
+			</div>
 		<?php else : ?>
+			<div class="img-circle landscape">
+				<img src="<?php echo $innerimg[url]; ?>" width="<?php echo $innerimg[width]/$innerimg[height]*100 ?>%">
+			</div>
+		<?php endif; //conditional for image orientation ?>
 
-			<article id="post-0" class="post no-results not-found">
 
-			<?php if ( current_user_can( 'edit_posts' ) ) :
-				// Show a different message to a logged-in user who can add posts.
-			?>
-				<header class="entry-header">
-					<h1 class="entry-title"><?php _e( 'No posts to display', 'twentytwelve' ); ?></h1>
-				</header>
+			</div>
+			<div class="col-sm-8 col-md-9">
+				<div>
+					<?php the_sub_field( 'text' ); ?>
+				</div>
+			</div>
 
-				<div class="entry-content">
-					<p><?php printf( __( 'Ready to publish your first post? <a href="%s">Get started here</a>.', 'twentytwelve' ), admin_url( 'post-new.php' ) ); ?></p>
-				</div><!-- .entry-content -->
 
-			<?php else :
-				// Show the default message to everyone else.
-			?>
-				<header class="entry-header">
-					<h1 class="entry-title"><?php _e( 'Nothing Found', 'twentytwelve' ); ?></h1>
-				</header>
+		<?php elseif ( get_sub_field( 'text' ) && !get_sub_field( 'inner_image' ) ) : ?>
+			
+			
+			<div class="col-sm-12">
+				<div>
+					<?php the_sub_field( 'text' ); ?>
+				</div>
+			</div>
+		<?php else : ?> 
 
-				<div class="entry-content">
-					<p><?php _e( 'Apologies, but no results were found. Perhaps searching will help find a related post.', 'twentytwelve' ); ?></p>
-					<?php get_search_form(); ?>
-				</div><!-- .entry-content -->
-			<?php endif; // end current_user_can() check ?>
+		<div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+				<?php if ($innerimg[height] > $innerimg[width]) : ?>
+			<div class="img-circle portrait">
+				<img src="<?php echo $innerimg[url]; ?>" width="<?php echo $innerimg[height]/$innerimg[width]*100 ?>%">
+			</div>
+		<?php else : ?>
+			<div class="img-circle landscape">
+				<img src="<?php echo $innerimg[url]; ?>" width="<?php echo $innerimg[width]/$innerimg[height]*100 ?>%">
+			</div>
+		<?php endif; //conditional for image orientation ?>
 
-			</article><!-- #post-0 -->
 
-		<?php endif; // end have_posts() check ?>
+			</div>
+			
 
-		</div><!-- #content -->
-	</div><!-- #primary -->
+		<?php endif; //if text and image ?>
+		</div>
+	</div>
 
-<?php get_sidebar(); ?>
+<?php endif; //if text or image?>
+
+
+
+
+
+</div>
+<?php endif; endwhile; endif; ?>
+
+
+
 <?php get_footer(); ?>

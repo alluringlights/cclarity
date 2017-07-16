@@ -1,51 +1,72 @@
-<?php
-/**
- * The template for displaying Category pages
- *
- * Used to display archive-type pages for posts in a category.
- *
- * @link http://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Twelve
- * @since Twenty Twelve 1.0
- */
+<?php get_header(); ?>
 
-get_header(); ?>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-9">
 
-	<section id="primary" class="site-content">
-		<div id="content" role="main">
 
-		<?php if ( have_posts() ) : ?>
-			<header class="archive-header">
-				<h1 class="archive-title"><?php printf( __( 'Category Archives: %s', 'twentytwelve' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?></h1>
 
-			<?php if ( category_description() ) : // Show an optional category description ?>
-				<div class="archive-meta"><?php echo category_description(); ?></div>
-			<?php endif; ?>
-			</header><!-- .archive-header -->
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
 
-				/* Include the post format-specific template for the content. If you want to
-				 * this in a child theme then include a file called called content-___.php
-				 * (where ___ is the post format) and that will be used instead.
-				 */
-				get_template_part( 'content', get_post_format() );
+<?php if ( have_posts() ) : ?>
+	<h1 class="category-title">Posts about <?php single_cat_title(); ?></h1>
+	<?php while ( have_posts() ) : the_post();?>
 
-			endwhile;
 
-			twentytwelve_content_nav( 'nav-below' );
-			?>
+<div class="row">
+	<div class="row">
+<div class="col-sm-12 archive-post" id="post-<?php the_ID(); ?>">
+	
+		<div class="col-xs-4 col-sm-3">
+		<a href="<?php the_permalink(); ?>">
+		<?php the_post_thumbnail('thumbnail'); ?>
+	</a>
+</div>
+		<div class="post-info col-xs-8 col-sm-9">
+		<a href="<?php the_permalink(); ?>">	
+			<h2><?php the_title(); ?></h2>
+		</a>
+		<p class="date"><?php echo get_the_date(); ?></p>
 
-		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
-		<?php endif; ?>
+	
+	<?php the_excerpt(); ?>
 
-		</div><!-- #content -->
-	</section><!-- #primary -->
+<a href="<?php the_permalink(); ?>">Read More</a>
+</div>
+				
+			</div>
+</div>
+</div>
 
-<?php get_sidebar(); ?>
+			<?php endwhile; ?> 
+
+			</div>
+
+			<div class="col-sm-3">
+				<?php get_sidebar(); ?>
+			</div>
+
+	</div>
+</div>
+<div class="nav-previous alignleft"><?php next_posts_link( 'Older posts' ); ?></div>
+<div class="nav-next alignright"><?php previous_posts_link( 'Newer posts' ); ?></div>
+
+
+		<?php else: ?>
+
+			<h1>Sorry!</h1>
+
+			<p>Nothing matched your search terms. You can try again or use one of the navigation links above.</p>
+			<?php get_search_form(); ?>
+
+			<?php endif;?>
+
+	
+
+		</div>
+	</div>
+</div>
+
+<?php //get_sidebar(); ?>
+
 <?php get_footer(); ?>
