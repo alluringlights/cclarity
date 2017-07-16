@@ -57,8 +57,15 @@
         <?php the_post_thumbnail(); ?>
     </a>
 	<?php endif; ?>
-	<?php the_excerpt(); ?>
-	<div class="fade-out"></div>
+	<?php
+	    if( strpos( $post->post_content, '<!--more-->' ) ) {
+	        the_content();
+	    }
+	    else {
+	        the_excerpt();
+	    }
+	?>
+	<!-- <div class="fade-out"></div> -->
 	<p class="read-more"><a href="<?php the_permalink(); ?>">Read More</a></p>
 				
 			</div>
