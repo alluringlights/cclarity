@@ -18,38 +18,46 @@ Template Name: Search Page
 
 <h1>Search results for <em><?php the_search_query(); ?></em>.</h1>
 
-<div class="grid">
-	<div class="grid-sizer"></div>
-	<div class="gutter-sizer"></div>
+<?php while ( have_posts() ) : the_post();?>
 
-	<?php while ( have_posts() ) : the_post(); ?>
-
-
-<div class="col-sm-6 grid-item" id="post-<?php the_ID(); ?>">
-
-	<header class="entry-header">
+<div class="row">
+	<div class="row">
+<div class="col-sm-12 archive-post" id="post-<?php the_ID(); ?>">
+	
+		<div class="col-xs-4 col-sm-3">
+		<a href="<?php the_permalink(); ?>">
+		<?php the_post_thumbnail('thumbnail'); ?>
+	</a>
+</div>
+		<div class="post-info col-xs-8 col-sm-9">
 		<a href="<?php the_permalink(); ?>">	
 			<h2><?php the_title(); ?></h2>
 		</a>
-		<p><?php echo get_the_date(); ?></p>
-	</header>
-	<a href="<?php the_permalink(); ?>">
-		<?php the_post_thumbnail(); ?>
-	</a>
+		<p class="date"><?php echo get_the_date(); ?></p>
+
+	
 	<?php the_excerpt(); ?>
-	<div class="fade-out"></div>
-	<p class="read-more"><a href="<?php the_permalink(); ?>">Read More</a></p>
+
+<a href="<?php the_permalink(); ?>">Read More</a>
+</div>
 				
 			</div>
-
+</div>
+</div>
 
 			<?php endwhile; ?> 
 
 			</div>
+
+			<div class="col-sm-3">
+				<?php get_sidebar(); ?>
+			</div>
+
 	</div>
-</div>
-<div class="nav-previous alignleft"><?php next_posts_link( 'Older posts' ); ?></div>
+	<div class="nav-previous alignleft"><?php next_posts_link( 'Older posts' ); ?></div>
 <div class="nav-next alignright"><?php previous_posts_link( 'Newer posts' ); ?></div>
+</div>
+
 
 
 		<?php else: ?>

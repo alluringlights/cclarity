@@ -42,12 +42,15 @@ li {
   margin-bottom: 10px;
 }
 
+.container {
+  overflow-y:hidden;
+}
 
-.archive {
+.archive, .search {
   .post-info {
     margin-bottom: 100px;
   }
-  .category-title {
+  h1 {
     color: $pink;
     text-align: center;
     font-size: 20px;
@@ -359,14 +362,22 @@ button {
 .social-links {
   margin: 0 100px;
   text-align: center;
+  font-size: 1.5rem;
+  
   @media (min-width: 768px) {
+    font-size: 1rem;
     float: right;
     margin: 0;
+    
   }
   li {
     display: inline-block;
     float: left;
     margin: 5px 15px;
+    padding: 10px;
+    @media (min-width: 768px) {
+      padding: 0;
+    }
   }
 }
 
