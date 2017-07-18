@@ -909,15 +909,15 @@ li.widget {
 }
 
 .es_textbox_class, #es_txt_name_pg, #es_txt_email_pg {
-    border: solid $pink 2px;
-    width: 100%;
-    max-width: 500px;
-    font-size: 16px;
-    padding: 5px;
+    border: solid $pink 2px !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    font-size: 16px !important;
+    padding: 5px !important;
     -webkit-appearance: none;
     border-radius: 0;
     &:focus {
-      outline: none;
+      outline: none !important;
     }
     
   }
