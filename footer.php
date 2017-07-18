@@ -18,7 +18,7 @@
 
 
 
-<p>Copyright &copy; <span class="current-year"></span> Hayley Ann Watters. All rights reserved.</p>
+<p>Copyright &copy; <span class="current-year"></span> Hayley Ann Watters.<br>All rights reserved.</p>
 
 <?php
 	if( get_field('social_icons', 'option') ): ?>
@@ -144,8 +144,10 @@
 				</a>
 			</li>
 
-	        <?php endif;
-	    endwhile;
+	        <?php endif; 
+	    endwhile; ?>
+	    </ul>
+	        <?php
 	endif; ?>
 	<p class="top-link"><a href="#top">Back to top</a></p>
 
@@ -154,5 +156,9 @@
 
 
 <?php wp_footer(); ?>
+<?php if ( get_field( 'google_analytics', 'option' ) ) {
+	the_field( 'google_analytics', 'option' );
+}
+?>
 </body>
 </html>

@@ -8,18 +8,22 @@ Template Name: Search Page
 
 <div class="container">
 	<div class="row">
-		<div class="col-sm-8 col-md-offset-2">
+		<div class="col-sm-9">
 
 
 
 
 
-			<h1>Sorry!</h1>
-			<p>There's nothing here. You may have entered the address incorrectly or followed a broken link.</p>
+			<h1>404 (Not Found)</h1>
+			<p>There's nothing here. You may have entered the address incorrectly or followed a broken link. Would you like to try a search?</p>
+			<?php get_search_form(); ?>
 
 	
 
 		</div>
+		<div class="col-sm-3">
+				<?php get_sidebar(); ?>
+			</div>
 	</div>
 </div>
 

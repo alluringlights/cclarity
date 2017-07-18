@@ -10,12 +10,14 @@
   line-height: 150%;
   font-family: $bodyfont;
   margin-bottom: 1em;
-  font-size: 16px;
+  font-size: 14px;
+  letter-spacing: 0.25px;
  }
 
  h1, h2, h3, h4 {
   font-family: $headingfont;
   line-height: 110%;
+  color: $pink;
  }
 
  h3, h4 {
@@ -54,7 +56,7 @@ input[type="text"],
   overflow-y:hidden;
 }
 
-.archive, .search {
+.archive, .search, .error404 {
   .post-info {
     margin-bottom: 100px;
   }
@@ -219,7 +221,7 @@ a.site-title {
 
 
 .nav-menu {
-  margin: 100px;
+  /*margin: 100px;*/
   @media (min-width: 768px) {
     display: inline-block; 
     margin: 0; 
@@ -368,7 +370,7 @@ button {
 }
 
 .social-links {
-  margin: 0 100px;
+  margin: 0;
   text-align: center;
   font-size: 1.5rem;
   
@@ -382,7 +384,7 @@ button {
     display: inline-block;
     float: left;
     /*margin: 5px 15px;*/
-    padding: 20px;
+    /*padding: 20px;*/
     margin-bottom: 0;
     @media (min-width: 768px) {
       padding: 0;
@@ -409,7 +411,7 @@ button {
       }
     }
     li {
-      margin: 30px;
+      /*margin: 30px;*/
       @media (min-width: 768px) {
         margin: 10px 20px 10px 0;
       }
@@ -418,22 +420,91 @@ button {
       }
     }
     .social-links {
+      /*min-width: 60px;
+      width: 75%;
       position: relative;
-      @media (min-width: 768px) {
+      margin: 100px auto;*/
+      /*@media (min-width: 768px) {
         position: absolute;
         top:50%;
         right:0;
-        transform: translate(0,-50%);  
+        transform: translate(0,-50%);  */
       }
       li {
-        margin: 5px 10px;
+        /*margin: 15px;*/
+        /*width: 50px;
+        height: 50px;*/
         float:none;
+        /*&:nth-last-of-type(2) {
+          margin-right: 50px;
+        }
+
+        &:nth-last-of-type(1) {
+          margin-left: -50px;
+        }*/
         @media (min-width: 992px){
           margin: 0 15px;
         }
       }
     }
+
+
+.social-links,
+.nav-menu {
+  width: 100%;
+  padding: 100px 50px 50px 50px;
+  text-align: left;
+  li {
+    margin: 0 0 50px 0;
+  }
+  @media (min-width:768px) {
+    width: auto;
+    padding: 0;
+    float: left;
+    li {
+      margin: 0;
+    }
+  }
 }
+
+.social-links {
+  font-size: 20px;
+  padding: 0 50px 0 50px;
+  li {
+    margin: 0 30px 30px 0;
+    float: left;
+  }
+  @media (min-width:768px) {
+    font-size: 12px;
+    padding: 0;
+    float: right;
+    top: auto;
+
+    /*
+        position: absolute;
+        top:50%;
+        right:0;
+        transform: translate(0,-50%); */
+    li {
+      margin: 0;
+    }
+  }
+}
+
+@media (min-width:768px) {
+  .nav-menu {
+    li {
+      margin: 30px 30px 30px 0;
+    }
+  }
+  .social-links {
+    font-size: 16px;
+    li {
+      margin: 30px 0 30px 30px;
+    }
+  }
+}
+
 
 #colophon {
   background-color: $pink;
@@ -444,6 +515,13 @@ button {
   font-weight: lighter;
   font-size: 14px;
   margin-top: 100px;
+  a {
+      color: $white;
+      transition: color 0.5s;
+      &:hover {
+        color: $darkgray;
+      }
+    }
   #footer-logo {
     width: 150px;
     height: auto;
@@ -451,20 +529,15 @@ button {
     margin: 50px auto;
   }
   .social-links {
+    text-align: center;
     float: none;
-    margin: 30px;
+    margin: 0;
+    padding: 0;
     li {
       float: none;
-      padding: 15px;
+      padding: 0;
+      margin: 15px;
     }
-    a {
-      color: $white;
-      transition: color 0.5s;
-      &:hover {
-        color: $darkgray;
-      }
-    }
-
   }
 }
 
@@ -593,6 +666,7 @@ input#searchsubmit {
 }
 
 .responsive-nav {
+  text-align: center;
   background-color: $white;
   opacity: 0;
   z-index: -999999;
@@ -815,6 +889,47 @@ li.widget {
   }
 }
 
+.es_widget_form {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea {
+    border: solid $pink 2px;
+    width: 100%;
+    max-width: 500px;
+    font-size: 16px;
+    padding: 5px;
+    -webkit-appearance: none;
+    border-radius: 0;
+    &:focus {
+      outline: none;
+    }
+    
+  }
+}
+
+.es_textbox_button {
+      border: none;
+      background-color: transparent;
+      margin: 0;
+      padding: 0;
+      width: auto;
+      color: $pink;
+      font-family: $headingfont;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.5s;
+      &:hover {
+        color: $darkgray;
+      }
+    }
+
+.widgets {
+  font-family: $bodyfont;
+  font-size: .9rem;
+}
 
 .entry-header {
   p {
@@ -826,6 +941,7 @@ li.widget {
   p {
   font-size: .9rem;
   font-family: $bodyfont;
+  line-height: 1.25;
   
 }
 .top-link {
@@ -882,9 +998,8 @@ li.widget {
     color: $pink;
       &>div {
             background-color: rgba(255,255,255,0.95);
-            padding-top: 15px;
-            padding-bottom: 15px;
-            border-radius: 15px;
+            padding: 50px;
+            /*border-radius: 15px;*/
 
       }
     }
@@ -1062,4 +1177,45 @@ em {
     border: 0;
     color: $pink;
   }
+}
+
+.search, .error404 {
+  #searchform {
+  div {
+    width: 500px;
+    max-width: 100%;
+    margin: 20px 0;
+  }
+}
+input#s {
+  width: 100%;
+  font-size: 30px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  font-family: $bodyfont;
+  border: 0;
+  border-bottom: solid $pink 2px;
+  background: transparent;
+  -webkit-appearance: none;
+  border-radius: 0;
+  &:focus {
+    outline: none;
+  }
+}
+input#searchsubmit {
+  border: none;
+  background-color: transparent;
+  font-family: $subheadfont;
+  text-transform: uppercase;
+  font-size: 20px;
+  float: right;
+  color: $pink;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.5s;
+  &:hover {
+    color: $darkgray;
+  }
+}
 }

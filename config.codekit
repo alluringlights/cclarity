@@ -864,7 +864,7 @@
 		"decimalPrecision": 10,
 		"fileType": 4,
 		"ignore": 1,
-		"ignoreWasSetByUser": 1,
+		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/library\/scss\/styles.scss",
 		"outputAbbreviatedPath": "\/library\/css\/styles.css",
 		"outputPathIsOutsideProject": 0,

@@ -10,13 +10,6 @@
 	<div class="row">
 		<div class="col-md-9">
 
-<div class="row">
-<div class="grid">
-
-	<div class="grid-sizer"></div>
-	<div class="gutter-sizer"></div>
-	
-
 
 		    <?php
 			//$args = array(
@@ -28,7 +21,17 @@
 		    
 
 		    ?>
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<?php if ( have_posts() ) : ?> 
+<div class="row">
+<div class="grid">
+
+	<div class="grid-sizer"></div>
+	<div class="gutter-sizer"></div>
+	
+
+
+
+	<?php while ( have_posts() ) : the_post(); ?>
 
 
 			<div class="col-sm-6 grid-item wow fadeIn" data-wow-duration="1s" id="post-<?php the_ID(); ?>">
@@ -70,7 +73,8 @@
 				
 			</div>
 
-			<?php endwhile; endif; ?>
+			<?php endwhile; ?> 
+
 </div></div>
 
 
@@ -78,6 +82,12 @@
 			<div class="col-xs-6 pagination"><?php next_posts_link('older'); ?></div>
 			<div class="col-xs-6 pagination"><?php previous_posts_link('newer'); ?></div>
 
+
+		<?php else: ?>
+			<h1>Coming soon!</h1>
+			<p>Check back here shortly.</p>
+
+			<?php endif; ?>
 
 
 

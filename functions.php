@@ -22,9 +22,13 @@ function theme_scripts() {
 
 	wp_enqueue_style( 'master-css', get_template_directory_uri() . '/library/css/master.css' );
 
+	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Gilda+Display|Lato:300,400' );
+
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css' );
 
 	}
+
+	
 
 add_action( 'wp_enqueue_scripts', 'theme_scripts' );
 
