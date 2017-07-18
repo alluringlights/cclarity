@@ -908,6 +908,20 @@ li.widget {
   }
 }
 
+.es_textbox_class {
+    border: solid $pink 2px;
+    width: 100%;
+    max-width: 500px;
+    font-size: 16px;
+    padding: 5px;
+    -webkit-appearance: none;
+    border-radius: 0;
+    &:focus {
+      outline: none;
+    }
+    
+  }
+
 .es_textbox_button {
       border: none;
       background-color: transparent;
