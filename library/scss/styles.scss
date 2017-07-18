@@ -893,7 +893,7 @@ li.widget {
   input[type="text"],
   input[type="email"],
   input[type="password"],
-  textarea {
+  textarea, .es_textbox_class {
     border: solid $pink 2px;
     width: 100%;
     max-width: 500px;
