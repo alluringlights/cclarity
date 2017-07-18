@@ -908,7 +908,7 @@ li.widget {
   }
 }
 
-.es_textbox_class {
+.es_textbox_class, #es_txt_name_pg, #es_txt_email_pg {
     border: solid $pink 2px;
     width: 100%;
     max-width: 500px;
