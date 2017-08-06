@@ -199,7 +199,7 @@ input[type="text"],
 	.parallax-window {
 		height: 50vh;
 		position: relative;
-    background-color: rgba(0,0,0,0.25);
+    background-color: rgba(0,0,0,0.1);
 	}
 }
 
@@ -360,7 +360,7 @@ button {
   text-indent: -9999px;
   background-size: cover;
   /*height: 0;*/
-  width: 200px;
+  width: 350px;
   transition: none;
   position: absolute;
   display: block;
@@ -851,7 +851,7 @@ li.widget {
 
 .single, .page {
   p {
-    font-size: 20px;
+    font-size: 15px;
   }
   
   .wp-post-image {

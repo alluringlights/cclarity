@@ -41,7 +41,7 @@
 			$logoar = (($logoheight / $logowidth) * 100);
 			?>
 				
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="site-title has-logo" id="site-title" style="background-image: url(<?php echo $logo[url]; ?>);height:<?php echo $logoar*2; ?>px">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="site-title has-logo" id="site-title" style="background-image: url(<?php echo $logo[url]; ?>);height:<?php echo $logoar*3.5; ?>px">
 						<?php bloginfo( 'name' ); ?>
 					</a>
 			
