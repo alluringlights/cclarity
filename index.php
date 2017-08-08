@@ -22,7 +22,7 @@
 
 		    ?>
 <?php if ( have_posts() ) : ?> 
-<div class="row">
+<!-- <div class="row"> -->
 <div class="grid">
 
 	<div class="grid-sizer"></div>
@@ -75,7 +75,8 @@
 
 			<?php endwhile; ?> 
 
-</div></div>
+<!-- </div> -->
+</div>
 
 
 			<?php //posts_nav_link(); ?>

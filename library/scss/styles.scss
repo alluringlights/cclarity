@@ -141,6 +141,9 @@ input[type="text"],
   
   padding-top: 15px;
   padding-bottom: 15px;
+  p {
+    text-align: center;
+  }
   
  }
 
@@ -339,7 +342,10 @@ button {
     top: 50%; }
 
 .grid {
-  width: 100%;
+  /*width: 100%;*/
+  @media (min-width: 768px) {
+  margin-left: -15px;
+}
 }
 
 .grid-sizer {
