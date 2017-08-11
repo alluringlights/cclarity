@@ -200,9 +200,13 @@ input[type="text"],
 .site-header {
   margin-bottom: 150px;
 	.parallax-window {
-		height: 50vh;
+		height: 55vh;
 		position: relative;
     background-color: rgba(0,0,0,0.1);
+    margin-top: 50px;
+    @media (min-width: 768px) {
+      margin-top: 0;
+    }
 	}
 }
 

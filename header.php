@@ -29,24 +29,6 @@
 	
 	<header id="masthead" class="site-header" role="banner">
 
-	<div class="parallax-window" data-parallax="scroll" data-image-src="<?php echo( get_header_image() ); ?>">
-		<button id="nav-toggle">
-						<i class="fa fa-navicon"></i>
-					</button>
-			<?php if( get_field('logo', 'option') ): 
-			$logo = get_field('logo', 'option');
-			//$metadata = wp_get_attachment_metadata($logo);
-			$logoheight = $logo['height'];
-			$logowidth = $logo['width'];
-			$logoar = (($logoheight / $logowidth) * 100);
-			?>
-				
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="site-title has-logo" id="site-title" style="background-image: url(<?php echo $logo[url]; ?>);height:<?php echo $logoar*3.5; ?>px">
-						<?php bloginfo( 'name' ); ?>
-					</a>
-			
-			
-		</div>
 		<nav id="site-navigation" class="main-navigation container" role="navigation">
 			
 			<div class="responsive-nav">
@@ -191,6 +173,26 @@
 		</div>
 		</div><!-- .row -->
 		</nav><!-- #site-navigation -->
+
+	<div class="parallax-window" data-parallax="scroll" data-image-src="<?php echo( get_header_image() ); ?>">
+		<button id="nav-toggle">
+						<i class="fa fa-navicon"></i>
+					</button>
+			<?php if( get_field('logo', 'option') ): 
+			$logo = get_field('logo', 'option');
+			//$metadata = wp_get_attachment_metadata($logo);
+			$logoheight = $logo['height'];
+			$logowidth = $logo['width'];
+			$logoar = (($logoheight / $logowidth) * 100);
+			?>
+				
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="site-title has-logo" id="site-title" style="background-image: url(<?php echo $logo[url]; ?>);height:<?php echo $logoar*3.5; ?>px">
+						<?php bloginfo( 'name' ); ?>
+					</a>
+			
+			
+		</div>
+		
 		<?php else: ?>
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 			<h1 class="site-title no-logo" id="site-title">
